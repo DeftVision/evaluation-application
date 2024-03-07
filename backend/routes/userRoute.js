@@ -6,7 +6,7 @@ router.get("/users", getUsers)
 router.get("/user/:id", getUser)
 
 router.post("/register", registerUser)
-router.post("?login", loginUser)
+router.post("/login", loginUser)
 
 
 router.patch("/update/:id", updateUser)

@@ -69,7 +69,7 @@ exports.registerUser = async (req, res) => {
         const user = new userModel({firstName, lastName, role, location, email, password: hashedPassword});
         await user.save();
         return res.send({
-            message: `The ${user.email},  created successfully`,
+            message: `User: ${user.email},  created successfully`,
             user,
         })
     }
