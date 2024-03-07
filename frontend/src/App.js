@@ -15,10 +15,10 @@ function App() {
 
     useEffect(() => {
         async function getUser() {
-            const response = await fetch(`http://localhost:8000/api/user/user/${userCookie}`, {
+            const response = await fetch(`http://localhost:8000/api/user/${userCookie}`, {
                 method: "GET",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
                 }
             });
             const _response = await response.json();
@@ -30,22 +30,23 @@ function App() {
             }
             setLoading(true);
 
-            if(userCookie) {
-                getUser();
-            } else {
-                setLoading(false);
-            }
         }
-    }, [])
+        if(userCookie) {
+            getUser();
+        } else {
+            setLoading(false);
+        }
+    }, []);
 
     if(loading) {
-        return <Loading />
+        return <Loading />;
     }
 
   return (
    <UserContext.Provider value={{user, setUser}}>
      <Router>
        <div className="App">
+           <Sidebar />
          <div className="page-content">
              <Routes>
                  <Route element={<PrivateRoutes />}>
