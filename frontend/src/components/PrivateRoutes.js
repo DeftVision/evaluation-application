@@ -4,5 +4,5 @@ import { useContext } from 'react';
 
 export default function PrivateRoutes() {
     const {user} = useContext(UserContext);
-    return user ? <Outlet /> : <Navigate to="/" />
+    return user ? <Outlet /> : <Navigate to="/login" />
 }
