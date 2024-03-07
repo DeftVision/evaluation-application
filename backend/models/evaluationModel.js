@@ -35,6 +35,10 @@ const evalSchema = new schema({
         type: Boolean,
         required: false,
     },
+    upsell: {
+        type: Boolean,
+        required: false,
+    },
     lobby: {
         type: Boolean,
         required: false,
@@ -47,6 +51,10 @@ const evalSchema = new schema({
         type: Number,
         required: true,
     },
+    clean: {
+        type: Number,
+        required: true,
+    },
     service: {
         type: Number,
         required: true,
@@ -55,7 +63,7 @@ const evalSchema = new schema({
         type: Number,
         required: false,
     },
-})
+}, {timestamps: true})
 
 const evalModel = mongoose.model("Eval", evalSchema);
 module.exports = evalModel

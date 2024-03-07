@@ -48,14 +48,14 @@ exports.getEval = async (req, res) => {
 
 exports.newEval = async (req, res) => {
     try {
-        const { visitDateTime, evaluator, location, comments, cashier, image, greeting, nameTag, lobby, patio, food, service, final } = req.body;
-        if(!visitDateTime || !evaluator || !location || !comments || !cashier || !image || !food || !service || !final) {
+        const { visitDateTime, evaluator, location, comments, cashier, image, greeting, nameTag, lobby, patio, food, service, clean, final } = req.body;
+        if(!visitDateTime || !evaluator || !location || !comments || !cashier || !image || !food || !service || !clean || !final) {
             return res.send({
                 message: "Missing values in required fields",
             })
         }
 
-        const eval = new evalModel({visitDateTime, evaluator, location, comments, cashier, image, greeting, nameTag, lobby, patio, food, service, final});
+        const eval = new evalModel({visitDateTime, evaluator, location, comments, cashier, image, greeting, nameTag, lobby, patio, food, service, clean, final});
         await eval.save();
         return res.send({
             message: "Evaluation saved successfully",
@@ -74,7 +74,7 @@ exports.newEval = async (req, res) => {
 exports.updateEval = async (req, res) => {
     try {
         const {id} = req.params;
-        const { visitDateTime, evaluator, location, comments, cashier, image, greeting, nameTag, lobby, patio, food, service, final } = req.body;
+        const { visitDateTime, evaluator, location, comments, cashier, image, greeting, nameTag, lobby, patio, food, service, clean, final } = req.body;
         const eval = await evalModel.findByIdAndUpdate(id, req.body, {new: true})
         return res.send({
             eval,
